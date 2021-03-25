@@ -16,8 +16,13 @@
                 try {
                     var raw_url = document.getElementById("before").value;
                     var url = new URL(raw_url);
-                    var document_srl = url.searchParams.get("document_srl");
                     var mid = url.searchParams.get("mid");
+                    var document_srl = url.searchParams.get("document_srl");
+                    var shorturl = url.pathname.match(/^\/([A-Za-z-_]+)\/([0-9]+)$/);
+                    if(shorturl != null) {
+                        mid = shorturl[1];
+                        document_srl = shorturl[2];
+                    }
 
                     if(url.host != "board.namu.wiki" || document_srl == null || mid == null) {
                         alert('변환할 수 없는 형태의 주소입니다!');
