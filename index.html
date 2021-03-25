@@ -18,7 +18,7 @@
                     var url = new URL(raw_url);
                     var mid = url.searchParams.get("mid");
                     var document_srl = url.searchParams.get("document_srl");
-                    var shorturl = url.pathname.match(/^\/([A-Za-z-_]+)\/([0-9]+)$/);
+                    var shorturl = url.pathname.match(/^\/([A-Za-z-_]+)\/([0-9]+)/);
                     if(shorturl != null) {
                         mid = shorturl[1];
                         document_srl = shorturl[2];
