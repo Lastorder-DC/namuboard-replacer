@@ -25,8 +25,8 @@
                         document_srl = shorturl[2];
                     }
                     if(newurl != null) {
-                        mid = shorturl[1];
-                        document_srl = shorturl[2];
+                        mid = newurl[1];
+                        document_srl = newurl[2];
                     }
                     if(url.host != "board.namu.wiki" || document_srl == null || mid == null) {
                         alert('변환할 수 없는 형태의 주소입니다!');
