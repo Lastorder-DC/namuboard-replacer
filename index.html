@@ -13,7 +13,7 @@
                 document.execCommand("copy");
             }
             function replaceUrl() {
-                var raw_url = document.getElementbyId("before").value;
+                var raw_url = document.getElementById("before").value;
                 var url = new URL(raw_url);
                 var document_srl = url.searchParams.get("document_srl");
                 var mid = url.searchParams.get("mid");
@@ -21,7 +21,7 @@
                 if(document_srl == null || mid == null) {
                     alert('변환할 수 없는 형태의 주소입니다!');
                 } else {
-                    document.getElementbyId("after").value = "https://board.namu.wiki/b/" + mid + "/" + document_srl;
+                    document.getElementById("after").value = "https://board.namu.wiki/b/" + mid + "/" + document_srl;
                 }
                 
                 return false;
