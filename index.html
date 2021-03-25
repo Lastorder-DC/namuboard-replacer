@@ -7,6 +7,26 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <title>Namuwiki Board Link Replacer</title>
+        <script>
+            function copyToClipboard(element) {
+                element.select();
+                document.execCommand("copy");
+            }
+            function replaceUrl() {
+                var raw_url = document.getElementbyId("before").value;
+                var url = new URL(raw_url);
+                var document_srl = url.searchParams.get("document_srl");
+                var mid = url.searchParams.get("mid");
+                
+                if(document_srl == null || mid == null) {
+                    alert('변환할 수 없는 형태의 주소입니다!');
+                } else {
+                    document.getElementbyId("after").value = "https://board.namu.wiki/b/" + mid + "/" + document_srl;
+                }
+                
+                return false;
+            }
+        </script>
     </head>
     <body>
         <!------ Include the above in your HEAD tag ---------->
@@ -16,8 +36,8 @@
                 <!-- Login Form -->
                 <form>
                     <input type="text" id="login" class="fadeIn second" id="before" placeholder="여기에 변환할 주소 입력">
-                    <input type="text" id="password" class="fadeIn third" id="after" readonly placeholder="변환된 주소가 이곳에 입력됩니다">
-                    <input type="button" class="fadeIn fourth" value="변환하기" onclick="alert('Testing...')">
+                    <input type="text" id="password" class="fadeIn third" id="after" readonly placeholder="변환된 주소가 이곳에 입력됩니다" onclick="copyToClipboard(this)">
+                    <input type="button" class="fadeIn fourth" value="변환하기" onclick="return replaceUrl()">
                 </form>
                 <!-- Remind Passowrd -->
                 <div id="formFooter">
